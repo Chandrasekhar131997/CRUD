@@ -33,8 +33,6 @@ display:inline-flex;
 float:right;
 `;
 export const StyledLeftcontainer = styled.div`
-/* display: inline-flex;
-text-align:space-between; */
 flex: 70%;
   display: flex;
   align-items: center;
@@ -148,7 +146,6 @@ export const CardButton = styled.button`
  margin-left: 50px;
  margin-top: 20px;
  margin-bottom: 30px;
- /* margin: 30px; */
   &:hover {
     box-shadow: 0 15px 15px rgba(0, 0, 0, .16);
     transform: translate(0, -5px);
