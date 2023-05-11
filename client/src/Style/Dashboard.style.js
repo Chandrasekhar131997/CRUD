@@ -155,6 +155,59 @@ export const CardButton = styled.button`
   }
 `
 
+//CardDetails Style
+
+export const Gettable =styled.table`
+justify-content: space-between;
+margin-left:8px;
+width:100%;
+box-shadow: 0 0 20px rgba(0, 0, 0, .05), 0 0px 40px rgba(0, 0, 0, .08); 
+ border-radius: 5px; 
+
+`
+
+export const Gettablehead =styled.thead`
+display: flex;
+justify-content: space-between;
+`
+export const Gettr =styled.tr`
+display: flex;
+justify-content: center;
+border: 1px solid #dddddd;
+width:100%;
+`
+export const Getth =styled.th`
+margin: auto;
+padding:8px;
+text-align: center;
+`
+export const Gettd =styled.td`
+margin: auto;
+padding:8px;
+text-align: center;
+`
+
+export const Gettablebody =styled.tbody`
+padding:20px;
+`
+
+
+
+//UpdateDetails Style
+
+export const InputData1 =styled.input`
+width:100px;
+height: 20px;
+display: flex;
+margin-top: 10px;
+border: none;
+`
+export const Getform =styled.form`
+justify-content: space-between;
+margin-left:5px;
+width:100%;
+`
+
 // inserDetails style
 
 export const Dataheading = styled.label`

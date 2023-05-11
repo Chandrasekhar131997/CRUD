@@ -1,0 +1,47 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+
+
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Employee{
+  id String @id @default(uuid())
+  pepoleHubId String 
+  employeeCode String
+  employeeName String
+  phoneNumber String
+  EmailID String
+  PersonalPhoneNumber String
+  PersonalEmailID String
+  Designation String
+  JoiningDate DateTime  @default(now())
+  Manager String
+  HRBP String
+  Unit String
+  Function String
+  SubFunction String
+  EmplymentType String
+  Grade String
+  Location String
+  
+role Roles @default(user)
+createdAt DateTime @default(now())
+updateAt DateTime @updatedAt
+}
+
+enum Roles {
+    superadmin
+    admin
+    user
+
+}

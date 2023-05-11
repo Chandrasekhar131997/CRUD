@@ -1,4 +1,4 @@
-import React from 'react';
+import React  from 'react';
 
 import CardDetails from './Card Details';
 
@@ -17,7 +17,6 @@ import {
 
 
 export default function EmployeeDashboard() {
-
 
 
   return (

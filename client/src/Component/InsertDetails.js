@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import React  from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 // import styled from "styled-components";
 import {CardWrapper,
         CardHeading,
@@ -19,23 +20,23 @@ export default function CardDetail(){
 
 
 const [employeedetails, setEmployeedetails] = useState({
-    peoplehubid: "",
-    employeecode: "",
-    employeename: "",
-    phonenumber: "",
-    emailid: "",
-    personalphonenumber: "",
-    personalemailid: "",
-    designation: "",
-    joiningdate: "",
-    manager: "",
-    hrbp: "",
-    unit: "",
-    function: "",
-    subfunction: "",
-    employeetype: "",
-    grade: "",
-    location: ""
+  pepoleHubId: "",
+  employeeCode: "",
+  employeeName: "",
+  phoneNumber: "",
+  EmailID : "",
+  PersonalPhoneNumber: "",
+  PersonalEmailID: "",
+  Designation : "",
+  JoiningDate: new Date(),
+  Manager: "",
+  HRBP: "",
+  Unit: "",
+  Function: "",
+  SubFunction: "",
+  EmplymentType : "",
+  Grade: "",
+  Location: ""
   });
   
   const handleChange = (event) => {
@@ -45,19 +46,21 @@ const [employeedetails, setEmployeedetails] = useState({
     });
   };
   
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
+    axios.post('http://localhost:5000/create',employeedetails)
+    .then(res =>{
+
+      setEmployeedetails(res)
+    navigate('/')
+
+    })
+    .catch(err =>console.log(err));
   };
   
-  function handleSaveEmployee(event) {
-    console.log("Employee details saved");
-    console.log(employeedetails);
-  }
 
-
-
-
-    return(
+  return(
       <CardWrapper>
         <CardHeading>Employee Details</CardHeading>
         <InputForm  onSubmit={handleSubmit}>
@@ -70,66 +73,65 @@ const [employeedetails, setEmployeedetails] = useState({
           <CardFieldset>
             
          
-         <Dataheading htmlFor="peoplehubid">PeopleHub ID
+         <Dataheading htmlFor="pepoleHubId">PepoleHub ID
             <InputData
           type="text"
-          name="peoplehubid"
-          value={employeedetails.peoplehubid}
+          name="pepoleHubId"
+          value={employeedetails.pepoleHubId}
           onChange={handleChange}
           />
             </Dataheading>
         
-            <Dataheading htmlFor="employeecode">Employee Code
+            <Dataheading htmlFor="employeeCode">Employee Code
             <InputData
           type="text"
-          name="employeecode"
-          value={employeedetails.employeecode}
+          name="employeeCode"
+          value={employeedetails.employeeCode}
           onChange={handleChange}
           />
             </Dataheading>
            
-            <Dataheading htmlFor="employeename">Employee Name
+            <Dataheading htmlFor="employeeName">Employee Name
             <InputData
           type="text"
-          name='employeename'
-          value={employeedetails.employeename}
+          name='employeeName'
+          value={employeedetails.employeeName}
           onChange={handleChange}
-          defaultValue="@abcdef"
           />
             </Dataheading>
            
-            <Dataheading htmlFor="phonenumber">Phone Number
+            <Dataheading htmlFor="phoneNumber">Phone Number
             <InputData
           type="text"
-          name="phonenumber"
-          value={employeedetails.phonenumber}
+          name="phoneNumber"
+          value={employeedetails.phoneNumber}
           onChange={handleChange}
           />
             </Dataheading>
          
-           <Dataheading htmlFor="emailid">Email ID
+           <Dataheading htmlFor="EmailID">Email ID
            <InputData
           type="text"
-          name='emailid'
-          value={employeedetails.emailid}
+          name='EmailID'
+          value={employeedetails.EmailID}
           onChange={handleChange}
           />
            </Dataheading>
             
-            <Dataheading htmlFor="personalphonenumber">Personal Phone Number
+            <Dataheading htmlFor="PersonalPhoneNumber">Personal Phone Number
             <InputData
           type="text"
-          name='personalphonenumber'
-          value={employeedetails.personalphonenumber}
+          name='PersonalPhoneNumber'
+          value={employeedetails.PersonalPhoneNumber}
           onChange={handleChange}
           />
             </Dataheading>
           
-            <Dataheading htmlFor="personalemailid">Personal Email ID
+            <Dataheading htmlFor="PersonalEmailID">Personal Email ID
             <InputData
           type="text"
-          name='personalemailid'
-          value={employeedetails.personalemailid}
+          name='PersonalEmailID'
+          value={employeedetails.PersonalEmailID}
           onChange={handleChange}
           />
             </Dataheading>
@@ -147,101 +149,100 @@ const [employeedetails, setEmployeedetails] = useState({
 
           <CardFieldset>
          
-            <Dataheading htmlFor="designation">Designation
+            <Dataheading htmlFor="Designation">Designation
             <InputData
           type="text"
-          name='designation'
-          value={employeedetails.designation}
+          name='Designation'
+          value={employeedetails.Designation}
           onChange={handleChange}
           />
             </Dataheading>
 
-            <Dataheading htmlFor="joiningdate">Joining Date
+            <Dataheading htmlFor="JoiningDate">Joining Date
             <InputData
           type="text"
-          name='joiningdate'
-          value={employeedetails.joiningdate}
+          name='JoiningDate'
+          value={employeedetails.JoiningDate}
           onChange={handleChange}
           />
             </Dataheading>
 
-            <Dataheading htmlFor="manager">Manager
+            <Dataheading htmlFor="Manager">Manager
             <InputData
           type="text"
-          name='manager'
-          value={employeedetails.manager}
+          name='Manager'
+          value={employeedetails.Manager}
           onChange={handleChange}
           />
             </Dataheading>
 
-            <Dataheading htmlFor="hrbp">HRBP
+            <Dataheading htmlFor="HRBP">HRBP
             <InputData
           type="text"
-          name='hrbp'
-          value={employeedetails.hrbp}
+          name='HRBP'
+          value={employeedetails.HRBP}
           onChange={handleChange}
           />
             </Dataheading>
-            <Dataheading htmlFor="unit">Unit 
+            <Dataheading htmlFor="Unit">Unit 
             <InputData
           type="text"
-          name='unit'
-          value={employeedetails.unit}
-          onChange={handleChange}
-          />
-            </Dataheading>
-
-            <Dataheading htmlFor="function">Function
-            <InputData
-          type="text"
-          name='function'
-          value={employeedetails.function}
-          onChange={handleChange}
-          />
-            </Dataheading>
-            <Dataheading htmlfor="subfunction">Sub Function
-            <InputData
-          type="text"
-          name='subfunction'
-          value={employeedetails.subfunction}
-          onChange={handleChange}
-          />
-            </Dataheading>
-            <Dataheading htmlFor="employeetype">Emplyment Type
-            <InputData
-          type="text"
-          name="employeetype"
-          value={employeedetails.employeetype}
-          onChange={handleChange}
-          />
-            </Dataheading>
-            <Dataheading htmlFor="grade">Grade
-            <InputData
-          type="text"
-          name='grade'
-          value={employeedetails.grade}
+          name='Unit'
+          value={employeedetails.Unit}
           onChange={handleChange}
           />
             </Dataheading>
 
-            <Dataheading htmlFor="location">Location
+            <Dataheading htmlFor="Function">Function
             <InputData
           type="text"
-          name='location'
-          value={employeedetails.location}
+          name='Function'
+          value={employeedetails.Function}
           onChange={handleChange}
           />
             </Dataheading>
-            {/* <CardButton type='submit' onClick={handleSave}>Save</CardButton> */}
+            <Dataheading htmlfor="SubFunction">Sub Function
+            <InputData
+          type="text"
+          name='SubFunction'
+          value={employeedetails.SubFunction}
+          onChange={handleChange}
+          />
+            </Dataheading>
+            <Dataheading htmlFor="EmplymentType">Emplyment Type
+            <InputData
+          type="text"
+          name="EmplymentType"
+          value={employeedetails.EmplymentType}
+          onChange={handleChange}
+          />
+            </Dataheading>
+            <Dataheading htmlFor="Grade">Grade
+            <InputData
+          type="text"
+          name='Grade'
+          value={employeedetails.Grade}
+          onChange={handleChange}
+          />
+            </Dataheading>
+
+            <Dataheading htmlFor="Location">Location
+            <InputData
+          type="text"
+          name='Location'
+          value={employeedetails.Location}
+          onChange={handleChange}
+          />
+            </Dataheading>
+            
            
           </CardFieldset>
           
-        
+          <CardButton type='submit' >Save</CardButton>
          
         </CardBody> 
 
              </InputForm>
-            <CardButton type='submit' onClick={handleSaveEmployee}>Save</CardButton>
             
       </CardWrapper>
 
@@ -249,6 +250,13 @@ const [employeedetails, setEmployeedetails] = useState({
     );
     
     }
+
+
+
+
+
+
+
 
 
 
